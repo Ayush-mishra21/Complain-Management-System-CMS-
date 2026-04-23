@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - CMS</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <% if(typeof message !== "undefined" && message){ %>
+    <div class="message-box">
+        <%= message %>
+    </div>
+    <% } %>
+
+    <!-- HEADER -->
+    <div class="dashboard-header">
+        <h1>
+            <%= name %> This is your
+            Dashboard</h1>
+        <p>Welcome to Complaint Management System</p>
+        <% if(role == "Employee"){ %>
+            <br>
+            <p style="color: green; background-color:black; width:10%; height:30px; border-radius:20px; align-content:center; margin-left:45%">You are Employee</p>
+        <% } else if(role === "Student") {%>
+            <br>
+            <p style="color: green; background-color:black; width:10%; height:30px; border-radius:20px; align-content:center; margin-left:45%">You are Student</p>
+        <% } else { %>
+            <br>
+            <p style="color: green; background-color:black; width:10%; height:30px; border-radius:20px; align-content:center; margin-left:45%">You are Admin</p>
+        <% } %>
+
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="card-container">
+
+        <div class="card">
+            <h3>Raise Complaint</h3>
+            <a href="/complaint">Open</a>
+        </div>
+
+        <div class="card">
+            <h3>Total Complaints</h3>
+            <a href="/Total-complaints">Open</a>
+        </div>
+
+        <div class="card">
+            <h3>Contact Support</h3>
+            <a href="/contact">Open</a>
+        </div>
+
+        <div class="card">
+            <h3>About System</h3>
+            <a href="/about">Open</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

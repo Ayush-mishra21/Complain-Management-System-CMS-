@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - CMS</title>
+    <link rel="stylesheet" href="/css/contact.css">
+</head>
+<body>
+
+    <% if(typeof message !== "undefined" && message){ %>
+    <div class="message-box">
+        <%= message %>
+    </div>
+    <% } %>
+
+    <div class="contact-container">
+
+        <h1>Contact Us</h1>
+        <p>If you have any issue or query, feel free to contact us.</p>
+
+        <form action="/contact-form" method="POST" class="contact-form" id ="myForm">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    placeholder="Enter your name" 
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Enter your email" 
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="reason">Reason</label>
+                <textarea 
+                    id="reason" 
+                    name="reason" 
+                    rows="5" 
+                    placeholder="Write your complaint or query..." 
+                    required
+                ></textarea>
+            </div>
+
+             <button type="submit" id="submitBtn">
+        Send Message
+    </button>
+
+        </form>
+
+    </div>
+
+</body>
+<script>
+document.getElementById("myForm").addEventListener("submit", function (e) {
+
+    const btn = document.getElementById("submitBtn");
+
+    if (btn.disabled) {
+        e.preventDefault(); 
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerText = "Sending... ⏳";
+
+});
+</script>
+</html>

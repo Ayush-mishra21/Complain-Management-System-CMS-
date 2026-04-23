@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Total Complaints</title>
+    <link rel="stylesheet" href="/css/table.css">
+</head>
+<body>
+
+
+<div class="container">
+
+     <% if(typeof message !== "undefined" && message){ %>
+    <div class="message-box">
+        <%= message %>
+    </div>
+    <% } %>
+
+    <% if (role === "Student") { %>
+        <h2>Your Total Complaints</h2>
+    <% } else if(role === "Employee") { %>
+        <h2>Complaints Assigned (Must be resolved within 7 days of creation)</h2>
+    <% } else{ %>
+        <h2>You Can Manage All Complain (Must be resolved within 7 days of creation)</h2>
+    <% } %>
+
+    <% if (result.length === 0) { %>
+        <p class="no-data">No complaints found</p>
+    <% } else { %>
+<br><br>
+        <div style="margin-left: 80%;">
+            <span class="filter-label">Filter :-</span>
+            <form action="/filtercamplain" method="POST" style="display: inline;">
+                <select name="filterby" class="update-btn" required>
+                  <option value="All">All</option>
+                  <option value="Unsolved">Unsolved</option>
+                  <option value="Solved">Solved</option>
+                  <option value="Delay">Delay</option>
+                </select>
+                <input type="submit" value="Ok" class="update-btn">
+            </form>
+        </div>
+        <br>
+    <div class="table-wrapper">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Reason</th>
+
+                    <th><%= role === "Student" ? "Your Email" : "Student Email" %></th>
+                    <th><%= role === "Student" ? "Your Mobile No" : "Student Mobile No" %></th>
+                    <th><%= role === "Employee" ? "You Resolver" : "Solver / Resolver Email" %></th>
+                    <th><%= role === "Student" ? "Your Department" : "Student Department" %></th>
+                    <th><%= role === "Student" ? "Your Name" : "Student Name" %></th>
+                    <th><%= role === "Student" ? "Your Course" : "Student Course" %></th>
+                    <th><%= role === "Student" ? "Your Section" : "Student Section" %></th>
+                    <th><%= role === "Student" ? "Resolver" : role === "Admin"? "Resolver" :"My name" %></th>
+
+                    <th>Created Date</th>
+                    <th>Status</th>
+                    <th>Remaining Day</th>
+                    <th>Action</th>
+                    <th>Approved</th>
+                    <% if(role === "Admin") { %>
+                    <th>Deleted</th>
+                    <% } %>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% result.forEach(function(item, index){ %>
+                     <%
+const remaining = 7 - Math.floor((new Date() - new Date(item.createddate)) / (1000 * 60 * 60 * 24));
+%>
+    <% if( !(typeof message !== "undefined" && message && message === "Filter applied: Delay"  && remaining > 0)){ %>
+
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= item.reason %></td>
+                        <td><%= item.complaineremail %></td>
+                        <td><%= item.complainermobno %></td>
+                        <td><%= item.resolveremail %></td>
+                        <td><%= item.complaindepartment %></td>
+                        <td><%= item.complainername %></td>
+                        <td><%= item.complainercourse %></td>
+                        <td><%= item.complainersection %></td>
+                        <td><%= item.resolvername %></td>
+                        <td><%= item.createddate %></td>
+
+                        <td>
+                            <span class="status <%= item.status.replace(/\s+/g, '') %>">
+                                <%= item.status %>
+                            </span>
+                        </td>
+
+                        <td>
+
+<span style="color: red;">
+    <% if (remaining > 0) { %>
+        <%= remaining %> days
+    <% } else { %>
+        Already Time Is Over.
+    <% } %>
+</span>
+</td>
+
+                        <% if (role !== "Student") { %>
+                            <% if(item.otp !== "NotApproved") {%>
+                              <td>
+                                <span class="update-btn">Solved</span>
+                              </td>
+                            <% } else { %>
+                                 <td>
+                                    <a href="/statusupdate/<%= item.id %>" class="update-btn">Update</a>
+                                 </td>
+                            <% } %>
+                        <% } else{ %>
+                            <td>
+                                <span class="disabled-btn">Student Not Allowed</span>
+                            </td>
+                        <% } %>
+
+    
+                        <% if (item.status === "Resolved"){ %>
+                           <% if(item.otp !== "NotApproved") {%>
+                              <td>
+                                <span style="color: green;">✔</span>
+                              </td>
+                            <% } else { %>
+                                <% if (role !== "Student") { %>
+                                   <td>
+                                      <a href="/statusotp/<%= item._id %>" class="update-btn">Submit Otp</a>
+                                   </td>
+                                <% } else{ %>
+                                    <td>
+                                       <span class="update-btn">Resolver Wait Otp</span>
+                                    </td>
+                                <% } %>
+                            <% } %>
+                        <% } else { %>
+                            <td>
+                                <span style="color: red;">Not Resolved</span>
+                            </td>
+                        <% } %>
+
+                        <% if(role === "Admin") { %>
+                           <td>
+                                <a href="/deletecomp/<%= item._id %>" class="update-btn">Delete</a>
+                            </td>
+                        <% } %>
+                    </tr>
+                     <% } %>
+                <% }) %>
+            </tbody>
+        </table>
+
+    </div>
+
+    <% } %>
+    <br>
+    <a href = "/Total-complaints" class="update-btn" >Go to Camplain List</a>
+
+</div>
+
+</body>
+</html>

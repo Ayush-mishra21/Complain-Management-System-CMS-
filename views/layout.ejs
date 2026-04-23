@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMS - Complaint Management System</title>
+
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
+</head>
+<body>
+    <nav class="navbar">
+
+        <div class="left">
+            <h2>CMS Portal</h2>
+        </div>
+
+        <div class="right">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/home">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/complaint">Complaint</a>
+            <a href="/?msg= Login / SignUp">Login / SignUp</a>
+            <a href="/logout">Logout</a>
+        </div>
+
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="page-content">
+        <%- body %>
+    </div>
+
+    <!-- FOOTER -->
+    <%- include("footer") %>
+
+</body>
+</html>

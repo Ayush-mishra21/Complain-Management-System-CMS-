@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Complaint Status</title>
+    <link rel="stylesheet" href="/css/status.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Update Complaint Status</h2>
+    <br>
+    <br>
+
+    <form action="/statusupdated/<%=id %>" method="POST" class="status-form" id = "myForm">
+
+        <div class="form-group">
+            <label>Status</label>
+            <select name="st" required>
+                <option value="Created">Select Status</option>
+                <option value="Pending">Pending</option>
+                <option value="Progress">Progress</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Update Message</label>
+            <textarea name="message" placeholder="Write update note (optional)" required></textarea>
+        </div>
+
+        <button type="submit" id ="submitBtn">Update Status</button>
+
+    </form>
+
+</div>
+<script>
+document.getElementById("myForm").addEventListener("submit", function (e) {
+
+    const btn = document.getElementById("submitBtn");
+
+    if (btn.disabled) {
+        e.preventDefault(); 
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerText = "Wait... ⏳";
+
+});
+</script>
+</body>
+</html>

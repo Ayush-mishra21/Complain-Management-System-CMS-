@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complain Form</title>
+    <link rel="stylesheet" href = "/css/complain.css">
+</head>
+<body>
+
+   <% if(typeof message !== "undefined" && message){ %>
+    <div class="message-box">
+        <%= message %>
+    </div>
+    <% } %>
+
+    <h2>Register Complaint</h2>
+
+<form action="/complaint/create" method="POST" class="complaint-form" id ="myForm">
+
+    <!-- Reason -->
+    <div class="form-group">
+        <label>Reason</label>
+        <textarea name="reason" required placeholder="Write your complaint reason"></textarea required>
+    </div>
+
+     <div class="form-group">
+        <label>Student Name</label>
+        <input type="text" name="extra" placeholder="Ex - Ayush" required>
+    </div>
+
+     <div class="form-group">
+        <label>Student Course</label>
+        <input type="text" name="course" placeholder="Ex - BTech" required>
+    </div>
+
+     <div class="form-group">
+        <label>Student Department</label>
+        <input type="text" name="cdepartment" placeholder="Ex - Computer Science" required>
+    </div>
+
+    <div class="form-group">
+        <label>Student Section</label>
+        <input type="text" name="section" placeholder="Ex - A" required>
+    </div>
+
+    <!-- Mobile -->
+    <div class="form-group">
+        <label>Mobile Number</label>
+        <input type="text" name="mobnumber" placeholder="Enter mobile number" required>
+    </div>
+
+
+    <!-- Resolver Dropdown -->
+    <div class="form-group">
+        <label>Assign Resolver</label>
+        <select name="resolverId" required>
+            <option value="">Select Resolver By Default Admin</option>
+
+            <% resolverList.forEach(function(resolver) { %>
+                <option value="<%= resolver._id %>">
+                    <%= resolver.name %> - <%= resolver.department %>
+                </option>
+            <% }) %>
+
+        </select>
+    </div>
+
+    <button type="submit" id = "submitBtn">Submit Complaint</button>
+
+</form>
+
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function (e) {
+
+    const btn = document.getElementById("submitBtn");
+
+    if (btn.disabled) {
+        e.preventDefault(); 
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerText = "Complain Creates Please Wait... ⏳";
+
+});
+</script>
+    
+</body>
+</html>

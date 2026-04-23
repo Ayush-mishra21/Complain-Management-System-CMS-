@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - Complaint Management System</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/about.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>About Complaint Management System</h1>
+
+    <p>
+        The <b>Complaint Management System (CMS)</b> is a web-based platform that helps users 
+        register, track, and resolve complaints in a structured and efficient manner.
+    </p>
+
+    <h2>System Overview</h2>
+    <p>
+        The system ensures that every complaint is properly managed, assigned, and resolved 
+        with transparency and accountability.
+    </p>
+
+    <h2>Complaint Assignment</h2>
+    <p>
+        Each complaint is assigned to a specific staff member such as a teacher, warden, 
+        mess incharge, or transport staff. Only the assigned person is responsible for 
+        resolving that complaint.
+    </p>
+
+    <h2>Complaint Status Flow</h2>
+    <p>
+        Every complaint follows a fixed status flow:
+    </p>
+
+    <ul>
+        <li><b>Created</b> → Complaint is registered</li>
+        <li><b>Pending</b> → Waiting for action</li>
+        <li><b>In Progress</b> → Work is ongoing</li>
+        <li><b>Resolved</b> → Complaint is successfully solved</li>
+    </ul>
+
+    <div class="highlight">
+        Once a complaint is marked as <b>Resolved</b>, an email notification is sent to the user. 
+        After this stage, the complaint status cannot be changed unless permission is given by the <b>Admin</b>.
+    </div>
+
+    <h2>Email Notifications</h2>
+<p>
+    The system automatically sends email notifications:
+</p>
+<ul>
+    <li>When a user signs up, a confirmation email is sent saying: <b>"You are successfully registered. Now you can use CMS."</b></li>
+    
+    <li>When a complaint is created, an email notification is sent to both the <b>complainer</b> and the <b>resolver</b>.</li>
+    
+    <li>Whenever the complaint status is updated, a notification email is sent to both the <b>complainer</b> and the <b>resolver</b> for tracking and history.</li>
+    
+    <li>When the complaint is resolved, a final confirmation email is sent to the user.</li>
+</ul>
+
+    <h2>OTP Verification System</h2>
+    <p>
+        After a complaint is marked as <b>Resolved</b>, an OTP verification process is used to confirm the resolution.
+    </p>
+    <ul>
+        <li>An OTP is sent to the complainant's email.</li>
+        <li>The complainant shares the OTP with the resolver.</li>
+        <li>Only after OTP verification, the complaint is considered fully approved.</li>
+    </ul>
+
+    <h2>Complaint Filters</h2>
+    <p>
+        Users can filter complaints based on different categories:
+    </p>
+    <ul>
+        <li><b>All</b></li>
+        <li><b>Solved</b></li>
+        <li><b>Unsolved</b></li>
+        <li><b>Delay</b> (complaints not resolved within 7 days)</li>
+    </ul>
+
+    <div class="highlight">
+        These filters are available to all users including <b>Admin, Employee, and Student</b>.
+    </div>
+
+    <h2>Admin Control & Management</h2>
+    <p>
+        The Admin has full control over the system and manages all operations:
+    </p>
+    <ul>
+        <li>Can resolve complaints directly</li>
+        <li>Can delete any complaint</li>
+        <li>Can reassign complaints to different resolvers</li>
+        <li>Manages the complete complaint lifecycle</li>
+    </ul>
+
+    <p>
+        The system supports multiple users, and there is no fixed limit on the number of 
+        <b>Employees, Students, or Admins</b> that can be created.
+    </p>
+
+    <h2>Complaint Resolution Policy</h2>
+    <p>
+        Every complaint must be resolved within <b>7 days</b> from its creation date.
+    </p>
+
+    <div class="highlight">
+        If a complaint is not resolved within 7 days, it will be automatically escalated 
+        to the <b>Admin</b> through a chain processing system.
+    </div>
+
+    <h2>Dashboard System</h2>
+    <p>
+        Each user has a personal dashboard where they can view only their own complaints 
+        and related information, ensuring privacy and a better user experience.
+    </p>
+
+</div>
+
+</body>
+</html>
