@@ -6,54 +6,65 @@
     <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 <body>
+
     <% if(typeof message !== "undefined" && message){ %>
     <div class="message-box">
         <%= message %>
     </div>
     <% } %>
 
-    <!-- HEADER -->
     <div class="dashboard-header">
-        <h1>
-            <%= name %> This is your
-            Dashboard</h1>
+        <h1><%= name %> This is your Dashboard</h1>
         <p>Welcome to Complaint Management System</p>
+
         <% if(role == "Employee"){ %>
-            <br>
-            <p style="color: green; background-color:black; width:10%; height:30px; border-radius:20px; align-content:center; margin-left:45%">You are Employee</p>
-        <% } else if(role === "Student") {%>
-            <br>
-            <p style="color: green; background-color:black; width:10%; height:30px; border-radius:20px; align-content:center; margin-left:45%">You are Student</p>
+            <p class="role-badge">Role: Employee</p>
+        <% } else if(role === "Student") { %>
+            <p class="role-badge">Role: Student</p>
         <% } else { %>
-            <br>
-            <p style="color: green; background-color:black; width:10%; height:30px; border-radius:20px; align-content:center; margin-left:45%">You are Admin</p>
+            <p class="role-badge">Role: Admin</p>
         <% } %>
+
+        <div class="info-box">
+            <p><b>System Info:</b> You can raise complaints, track status, and get quick support.</p>
+            <p><b>Security:</b> All complaints are stored securely in database.</p>
+            <p><b>Status Update:</b> Real-time updates will be shown in your account.</p>
+        </div>
 
     </div>
 
-    <!-- QUICK LINKS -->
     <div class="card-container">
 
         <div class="card">
-            <h3>Raise Complaint</h3>
+            <h3>📌 Raise Complaint</h3>
+            <p>Create a new complaint and submit it to admin.</p>
             <a href="/complaint">Open</a>
         </div>
 
         <div class="card">
-            <h3>Total Complaints</h3>
+            <h3>📊 Total Complaints</h3>
+            <p>View all submitted complaints and their status.</p>
             <a href="/Total-complaints">Open</a>
         </div>
 
         <div class="card">
-            <h3>Contact Support</h3>
+            <h3>📞 Contact Support</h3>
+            <p>Get help from admin or technical support team.</p>
             <a href="/contact">Open</a>
         </div>
 
         <div class="card">
-            <h3>About System</h3>
+            <h3>ℹ️ About System</h3>
+            <p>Know more about CMS system and features.</p>
             <a href="/about">Open</a>
         </div>
 
+    </div>
+
+    <div class="footer-links">
+        <p>© 2026 Complaint Management System | All Rights Reserved</p>
+        <a href="/home">Home</a>
+        <a href="/logout">Logout</a>
     </div>
 
 </body>
