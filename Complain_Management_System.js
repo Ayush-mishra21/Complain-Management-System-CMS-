@@ -26,6 +26,8 @@ const transporter = nodemailer.createTransport({
 });
 
 app.set("view engine", "ejs");
+app.set("views", "./views");
+// app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(expressLayouts);
@@ -501,3 +503,4 @@ app.get("/home",(req, res)=>{
 // app.listen(12345, () => {
 //     console.log("Server running on http://localhost:12345");
 // });
+module.exports = app;

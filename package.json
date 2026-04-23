@@ -6,9 +6,12 @@
   "author": "Ayush",
   "type": "module",
   "main": "Complain_Management_System.js",
+  "engines":{
+    "node" : "20.x"
+  },
   "scripts": {
-    "start": "node Complain_Management_System.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Complain_Management_System.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
