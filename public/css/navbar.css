@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+}
+
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+
+    background: #1e1e2f;
+    padding: 0 30px;
+
+    color: white;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* LEFT (FORCE VISIBILITY) */
+.left {
+    flex: 0 0 auto;
+    min-width: 260px;
+}
+
+.left h2 {
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: white;
+}
+
+/* RIGHT */
+.right {
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+}
+
+.right a {
+    text-decoration: none;
+    color: white;
+
+    padding: 8px 16px;
+    border-radius: 25px;
+
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.right a::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 0%;
+    height: 0%;
+    background: #4CAF50;
+    border-radius: 25px;
+
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+
+    z-index: -1;
+}
+
+.right a:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.right a:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+/* PAGE CONTENT */
+.page-content {
+    padding: 25px;
+}

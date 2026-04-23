@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* container */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+/* heading */
+h2 {
+    text-align: center;
+    color: #0077cc;
+    margin-bottom: 25px;
+}
+
+/* form box */
+.complaint-form {
+    background: #111;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* form group */
+.form-group {
+    margin-bottom: 18px;
+}
+
+/* labels */
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #00c2ff;
+    font-weight: 600;
+}
+
+/* inputs - FIXED (WHITE BACKGROUND) */
+textarea,
+input,
+select {
+    width: 100%;
+    padding: 11px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    background: #ffffff;
+    color: #000;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* focus effect */
+textarea:focus,
+input:focus,
+select:focus {
+    border-color: #00c2ff;
+    box-shadow: 0 0 6px rgba(0,194,255,0.4);
+}
+
+/* textarea */
+textarea {
+    resize: none;
+    height: 110px;
+}
+
+/* button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #00c2ff;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* hover */
+button:hover {
+    background: #009fd6;
+}
+
+/* message box */
+.message-box {
+    background: #22c55e;
+    color: #fff;
+    padding: 12px 20px;
+    margin: 15px auto;
+    border-radius: 50px;
+    font-weight: 500;
+    text-align: center;
+    width: fit-content;
+    min-width: 200px;
+
+    opacity: 0;
+    animation: fadeInOut 3s ease-in-out forwards;
+}
+
+/* animation */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+    }
+}
+
+/* responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    .complaint-form {
+        padding: 20px;
+    }
+}
