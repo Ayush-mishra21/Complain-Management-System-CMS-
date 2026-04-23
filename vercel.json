@@ -9,7 +9,7 @@
  "routes": [
    {
   "src": "/(.*)",
-  "dest": "/Complain_Management_System.js"
+  "dest": "/"
    }
  ]
   }
