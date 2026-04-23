@@ -12,6 +12,7 @@ import nodemailer from "nodemailer";
 // import { MdSubject } from "react-icons/md";
 import Otpmodel from "./Models/Model/Otpmodel.js";
 import Adminmodel from "./Models/Model/Adminmodel.js";
+import dotenv from "dotenv";
 
 
 const app = express();
@@ -33,17 +34,23 @@ app.use(express.static("public"));
 app.use(expressLayouts);
 app.set("layout", "layout");
 
-const url = "mongodb://localhost:27017/Complain_system";
-const connectDB = async () => {
-    try {
-        await mongoose.connect(url);
-        console.log("MongoDB connected successfully");
-    } catch (error) {
-        console.log("MongoDB connection failed", error);
-    }
-};
+// const url = "mongodb://localhost:27017/Complain_system";
+// const connectDB = async () => {
+//     try {
+//         await mongoose.connect(url);
+//         console.log("MongoDB connected successfully");
+//     } catch (error) {
+//         console.log("MongoDB connection failed", error);
+//     }
+// };
+// connectDB();
 
-connectDB();
+const url = "mongodb+srv://ayushmishra0003_db_user:Ayush@123@cluster0.0nk49ns.mongodb.net/?appName=Cluster0";
+
+mongoose.connect(url)
+  .then(() => console.log("DB Connected"))
+  .catch(err => console.log(err));
+
 const JWT_SECRET = "cms_secret_key_123";
 app.use((err, req, res, next) => {
     console.error(err);
@@ -500,7 +507,8 @@ app.get("/contact",(req, res)=>{
 app.get("/home",(req, res)=>{
     res.render("home");
 });
-// app.listen(12345, () => {
-//     console.log("Server running on http://localhost:12345");
-// });
+const PORT = process.env.PORT || 12345;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 module.exports = app;
