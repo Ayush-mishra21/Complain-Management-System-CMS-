@@ -487,36 +487,6 @@ app.post("/filtercamplain", veryfication, async (req, res) => {
     }
 });
 
-
-
-//     if(req.user.role == "Employee"){
-//         const result = await Complainmodel.find({resolveremail:req.user.email});
-//         res.render("totalcomplain",{result, role:req.user.role, message:req.query.msg});
-//         return;
-//     }
-//     if(req.user.role == "Admin"){
-//         const result = await Complainmodel.find();
-//         res.render("totalcomplain",{result, role:req.user.role, message:req.query.msg});
-//         return;
-//     }
-//     const result = await Complainmodel.find({complaineremail:req.user.email});
-//     res.render("totalcomplain",{result, role:req.user.role});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.get("/about",(req, res)=>{
     res.render("about");
 })
