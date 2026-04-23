@@ -66,6 +66,9 @@
                     <% if(role === "Admin") { %>
                     <th>Deleted</th>
                     <% } %>
+                     <% if(role === "Admin") { %>
+                      <th>Edit</th>
+                    <% } %>
                 </tr>
             </thead>
 
@@ -148,6 +151,11 @@ const remaining = 7 - Math.floor((new Date() - new Date(item.createddate)) / (10
                         <% if(role === "Admin") { %>
                            <td>
                                 <a href="/deletecomp/<%= item._id %>" class="update-btn">Delete</a>
+                            </td>
+                        <% } %>
+                        <% if(role === "Admin") { %>
+                           <td>
+                                <a href="/editcomp/<%= item._id %>" class="update-btn">Edit</a>
                             </td>
                         <% } %>
                     </tr>

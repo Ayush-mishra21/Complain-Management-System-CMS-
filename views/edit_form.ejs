@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Complaint</title>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Edit Complaint<%= data.reason %></h2>
+
+    <form action="/update/<%= data._id %>" method="POST" class="form-box" id = "myForm">
+
+        <label>Reason</label>
+        <input type="text" name="reason" value="<%= data.reason %>">
+
+        <label>Name</label>
+        <input type="text" name="complainername" value="<%= data.complainername %>">
+
+        <label>Course</label>
+        <input type="text" name="complainercourse" value="<%= data.complainercourse %>">
+
+        <label>Department</label>
+        <input type="text" name="complainerdepartment" value="<%= data.complainerdepartment %>">
+
+        <label>Section</label>
+        <input type="text" name="complainersection" value="<%= data.complainersection %>">
+
+        <label>Mobile</label>
+        <input type="text" name="complainermobno" value="<%= data.complainermobno %>">
+
+        <label>Email</label>
+        <input type="email" name="complaineremail" value="<%= data.complaineremail %>">
+
+        <label>Department Assigned</label>
+        <input type="text" name="complaindepartment" value="<%= data.complaindepartment %>">
+
+        <div class="form-group">
+    <label>Assign Resolver</label>
+
+    <select name="resolveremail" required>
+        <option value="">Select Resolver</option>
+
+        <% resolverList.forEach(function(resolver) { %>
+
+            <option value="<%= resolver.email %>"
+                <%= data.resolveremail === resolver.email ? "selected" : "" %>>
+
+                <%= resolver.name %> - <%= resolver.department %>
+
+            </option>
+
+        <% }) %>
+
+    </select>
+</div>
+        <label>Status</label>
+        <select name="status">
+            <option value="Created" <%= data.status === "Created" ? "selected" : "" %>>Created</option>
+            <option value="Pending" <%= data.status === "Pending" ? "selected" : "" %>>Pending</option>
+            <option value="Progress" <%= data.status === "Progress" ? "selected" : "" %>>Progress</option>
+            <option value="Resolved" <%= data.status === "Resolved" ? "selected" : "" %>>Resolved</option>
+        </select>
+
+        <button type="submit" id = "submitBtn">Update Complaint</button>
+
+    </form>
+
+</div>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function (e) {
+
+    const btn = document.getElementById("submitBtn");
+
+    if (btn.disabled) {
+        e.preventDefault(); 
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerText = "Complain Update Please Wait... ⏳";
+
+});
+</script>
+</body>
+</html>

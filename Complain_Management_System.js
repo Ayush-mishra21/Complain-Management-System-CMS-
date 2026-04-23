@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: "ayushmishra0003@gmail.com",
-      pass: "Password secret" 
+      pass: "Secret" 
     }
 });
 
@@ -484,6 +484,64 @@ app.post("/filtercamplain", veryfication, async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).render("server_error");
+    }
+});
+
+
+app.get("/editcomp/:id", async (req, res) => {
+    try {
+        const data = await Complainmodel.findById(req.params.id);
+
+        const resolverList = await Employemodel.find();
+
+        res.render("edit_form", { data, resolverList });
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).render("server_error");
+    }
+});
+
+app.post("/update/:id", async (req, res) => {
+
+    try {
+        const id = req.params.id;
+        const data = req.body;
+
+        data.otp = "NotApproved";
+
+        // 🔥 SAFE RESOLVER FIND
+        const resolver = await Employemodel.findOne({ email: data.resolveremail });
+
+        if (!resolver) {
+            return res.status(400).send("Resolver not found");
+        }
+
+        data.resolvername = resolver.name;
+
+        await Complainmodel.findByIdAndUpdate(id, data);
+console.log(resolver.email, data.complaineremail);
+        // 🔥 EMAIL TO RESOLVER
+        await transporter.sendMail({
+            from: "Ayushmishra0003@gmail.com",
+            to: resolver.email,
+            subject: "New Complaint Assigned By Admin",
+            text: "Solve this complaint within 7 days. Reason is :- " + req.body.reason
+        });
+
+        // 🔥 EMAIL TO COMPLAINER
+        await transporter.sendMail({
+            from: "Ayushmishra0003@gmail.com",
+            to: data.complaineremail,
+            subject: "Complaint Updated",
+            text: "You Complain assign to onther resolver. Reason is :- " + req.body.reason
+        });
+
+        return res.redirect("/Total-complaints?msg=Complaint Updated");
+
+    } catch (err) {
+        console.log(err);
+        return res.status(500).render("server_error");
     }
 });
 
