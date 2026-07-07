@@ -2,26 +2,26 @@
   "name": "complain-management-system",
   "version": "1.0.0",
   "description": "Complain System",
-  "license": "ISC",
   "author": "Ayush",
+  "license": "ISC",
   "type": "module",
   "main": "Complain_Management_System.js",
   "engines": {
     "node": "20.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node Complain_Management_System.js"
   },
- "dependencies": {
-  "bcrypt": "^6.0.0",
-  "cookie-parser": "^1.4.7",
-  "dotenv": "^17.4.2",
-  "express": "^5.1.0",
-  "express-ejs-layouts": "^2.5.1",
-  "jsonwebtoken": "^9.0.3",
-  "mongoose": "^9.5.0",
-  "nodemailer": "^8.0.5",
-  "serverless-http": "^4.0.0"
-}
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.5.0",
+    "nodemailer": "^8.0.5",
+    "serverless-http": "^4.0.0"
+  }
 }
