@@ -556,6 +556,8 @@ app.get("/contact",(req, res)=>{
 app.get("/home",(req, res)=>{
     res.render("home");
 });
-app.listen(12345, () => {
-    console.log("Server running on http://localhost:12345");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on ${PORT}`);
 });
